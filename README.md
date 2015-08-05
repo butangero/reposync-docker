@@ -3,9 +3,12 @@ Docker container to download or sync a YUM repository. Ideal for downloading RPM
 
 # Quick Start
 
-The quickest way to get started is using [docker-compose](https://docs.docker.com/compose/).
+The quickest way to get started:
 
-```bash
-wget https://raw.githubusercontent.com/sameersbn/docker-gitlab/master/docker-compose.yml
-docker-compose up
+```
+docker run --name reposync-docker \
+    --env 'REPO_ID=mesosphere' \
+    --env 'REPO_RPM=http://repos.mesosphere.io/el/7/noarch/RPMS/mesosphere-el-repo-7-1.noarch.rpm' \
+    --volume /srv/local/dir/to/save/rpms:/rpms \
+    bgulla/reposync-docker
 ```
